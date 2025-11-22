@@ -9,7 +9,11 @@
   }
 
   *{
-      letter-spacing: 2px;
+      letter-spacing: 1px;
+  }
+
+  html{
+      scroll-behavior: smooth;
   }
 
   html,body{
@@ -133,48 +137,67 @@
       color: var(--accent-gold);
   }
 
-  @media (max-width:680px){
-      .toggle{
-          display: block;
-          margin: 20px 15px;
-      }
+  @media (max-width: 680px) {
 
-      .menu{
-          display: none;
-          position: relative;
-          padding-right: 0;
-          margin-right: 0;
-      }
-
-      .menu.open{
-          display: block;
-      }
-      .menu ul{
-          flex-direction: column;
-          gap: 15px;
-          position: absolute;
-          right: 5px;
-          top: 30px;
-          padding: 5px 0;
-          width: 30%;
-          margin-right: 0;
-      }
-
-      .menu ul a{
-          border-radius: 20px;
-          padding: 5px 8px;
-          margin-top:  10px;
-          width: 30%;
-          background: var(--second-color);
-      }
-
-      .menu ul .contact{
-          font-size: 1.2rem;
-          margin-right: 0;
-          margin-top: 5px;
-      }
+    /* Show toggle icon */
+    .toggle {
+        display: block;
+        margin: 20px 15px;
+        cursor: pointer;
+        z-index: 1001;
+    }
+  
+    /* Hide main menu by default */
+    .menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 15px;
+        width: 65vw; /* better for small screens */
+        background: var(--bg-color);
+        padding: 15px 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 25px rgba(0,0,0,0.25);
+        transition: all .3s ease;
+        z-index: 1000;
+    }
+  
+    /* When opened */
+    .menu.open {
+        display: block;
+    }
+  
+    .menu ul {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+  
+    .menu ul a {
+        width: 100%; /* full width for easier tapping */
+        text-align: center;
+        border-radius: 12px;
+        padding: 10px 0;
+        color: var(--main-color);
+        font-size: 1rem;
+        transition: .3s ease;
+    }
+  
+    /* Contact button style inside mobile menu */
+    .menu ul .contact {
+        font-size: 1.2rem;
+        margin: 5px 0;
+        background: var(--gradient-gold);
+        color: var(--bg-color);
+        font-weight: bold;
+    }
+  
+    /* Hover effects for mobile (optional because touch screens) */
+    .menu ul a:hover {
+        transform: scale(1.03);
+    }
   }
-
+  
   .content {
       display: flex;
       flex-direction: column;
@@ -202,6 +225,18 @@
       background-position: 100px;
       text-transform: capitalize;
       font-size: 2.5rem;
+      animation: slide-up .5s linear;
+  }
+
+  @keyframes slide-up {
+      from{
+          transform: translateX(-50px) ;
+          opacity: .4;
+      }
+      to{
+          transform: translateX(0) ;
+          opacity: 1;
+      }
   }
 
   .content h1 span{
@@ -219,8 +254,9 @@
 
   .third{
       color: var(--main-color);
-      max-width: 600px;
+      max-width: 500px;
       margin: auto;
+      flex-wrap: wrap;
   }
 
   .buttons{
@@ -264,6 +300,30 @@
       transform: scale(1.2);
       box-shadow: 0 0 30px 2px var(--accent-gold);
   }
+
+  @media (max-width: 480px) {
+    .content {
+        margin-top: 90px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .hire,
+    .view {
+        width: 100%;
+        max-width: 260px;
+        font-size: 1.1rem;
+        padding: 10px;
+    }
+
+    .third {
+        font-size: 0.9rem;
+        padding: 0 5px;
+    }
+}
 
   .services{
       display: block;
