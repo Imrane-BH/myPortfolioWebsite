@@ -307,7 +307,7 @@
     }
 
     .buttons {
-        flex-direction: column;
+        justify-content: space-between;
         gap: 12px;
     }
 
